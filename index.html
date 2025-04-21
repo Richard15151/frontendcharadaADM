@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Charadas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-950 to-blue-800 min-h-screen p-4 font-sans text-gray-900">
+  <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-6 border border-blue-200 overflow-hidden">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-center text-blue-900 flex items-center justify-center gap-2">
+      <i data-lucide="laugh" class="w-6 h-6 text-yellow-400"></i>
+      Admin Charadas
+    </h1>
+
+    <!-- Adicionar nova charada -->
+    <form class="bg-blue-50 p-5 rounded-xl mb-6 border border-blue-100" id="create-form">
+      <h2 class="text-lg sm:text-xl font-semibold mb-3 text-blue-900">Adicionar uma nova charada</h2>
+      <label class="block mb-2 text-sm font-medium">Pergunta:</label>
+      <input type="text" id="create-name" class="w-full mb-3 p-3 border border-blue-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Digite a pergunta" required>
+      <label class="block mb-2 text-sm font-medium">Resposta:</label>
+      <input type="text" id="create-description" class="w-full mb-4 p-3 border border-blue-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Digite a resposta" required>
+      <button class="bg-green-500 text-white font-semibold px-5 py-2 rounded-xl hover:bg-green-600 flex items-center gap-2" type="submit">
+        <i data-lucide="plus"></i>Adicionar
+      </button>
+    </form>
+
+    <hr class="my-6 border-blue-200">
+
+    <!-- Charadas cadastradas com filtros e paginação -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+        <h2 class="text-lg sm:text-xl font-semibold text-blue-900">Charadas cadastradas</h2>
+        <input type="text" id="pesquisainput" placeholder="Pesquisar por ID..." class="p-2 px-4 w-full sm:w-64 rounded-xl border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+
+      <!-- Lista paginada -->
+      <div id="item-list" class="min-h-[510px] max-h-[510px] overflow-y-auto mb-4">
+        <p>Carregando charadas...</p>
+      </div>
+
+      <!-- Paginação -->
+      <div class="flex justify-center mt-4">
+        <nav id="paginacao" class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editar charada (inicialmente escondido) -->
+  <form id="update-form" class="max-w-2xl mx-auto bg-white p-6 mt-10 rounded-xl shadow-xl border border-blue-100 hidden">
+    <h2 class="text-xl font-semibold mb-4 text-blue-900">Editar charada</h2>
+    <input type="hidden" id="update-id">
+    <label class="block mb-2 text-sm font-medium">Pergunta:</label>
+    <input type="text" class="w-full mb-4 p-3 border border-blue-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Editar pergunta"id="update-name" required>
+    <label class="block mb-2 text-sm font-medium">Resposta:</label>
+    <input type="text" class="w-full mb-4 p-3 border border-blue-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Editar resposta"id="update-description" required>
+    <div class="flex gap-3">
+      <button type="submit" class="bg-blue-500 text-white font-semibold px-6 py-2 rounded-xl hover:bg-blue-600 flex items-center gap-2">
+        <i data-lucide="save"></i>Salvar alterações
+      </button>
+      <button type="button" class="bg-yellow-400 text-black font-semibold px-6 py-2 rounded-xl hover:bg-yellow-500 flex items-center gap-2" id="cancel-update">
+        <i data-lucide="x-circle"></i>Cancelar alteração
+      </button>
+    </div>
+  </form>
+
+  <script>
+    lucide.createIcons();
+  </script>
+  <script src="script2.js"></script>
+  <!-- Container para as notificações Toast  (pop-ups)-->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 space-y-3 w-full max-w-xs sm:max-w-sm">
+    <!-- Toasts serão adicionados aqui via JS -->
+  </div>
+</body>
+</html>
