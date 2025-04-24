@@ -2,8 +2,8 @@
 
 // URL's da nossa API (Backend)
 
-const ENDPOINT_CHARADAS = 'http://127.0.0.1:5000/charadas';
-const ENDPOINT_LISTA_TODAS = "http://127.0.0.1:5000/charadas/lista"
+const ENDPOINT_CHARADAS = 'https://ap-icharada.vercel.app/charadas';
+const ENDPOINT_LISTA_TODAS = "https://ap-icharada.vercel.app/charadas/lista"
 
 // Ligando com os elementos HTML
 
